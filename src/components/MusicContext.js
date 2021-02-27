@@ -6,9 +6,9 @@ export const MusicProvider = (props) => {
   const [state, setState] = useState({
     tracks: [],
     isLoading: false,
-    player: new Audio(),
     isPlaying: false,
     currentIndex: -1,
+    searchInput: "",
   });
 
   return (

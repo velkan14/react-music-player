@@ -4,7 +4,7 @@ import { MusicContext } from "./MusicContext";
 const useMusicState = () => {
   const [state, setState] = useContext(MusicContext);
 
-  const { isPlaying, player, currentIndex } = state;
+  const { tracks, isPlaying, currentIndex } = state;
 
   const setTracks = (newTracks) => {
     setState((prevState) => ({
@@ -22,12 +22,14 @@ const useMusicState = () => {
   };
 
   const togglePlay = () => {
-    if (isPlaying) {
-      player.pause();
-    } else {
-      player.play();
-    }
     setState({ ...state, isPlaying: !isPlaying });
+  };
+
+  const setCurrentTrack = (index) => {
+    setState({
+      ...state,
+      currentIndex: index,
+    });
   };
 
   const playTrack = (index) => {
@@ -39,16 +41,35 @@ const useMusicState = () => {
   };
 
   const nextTrack = () => {
-    setState({
-      ...state,
-      currentIndex: currentIndex + 1,
-    });
+    const nextIndex = currentIndex + 1;
+    if (nextIndex < tracks.length) {
+      setState({
+        ...state,
+        currentIndex: nextIndex,
+      });
+    } else {
+      setState({
+        ...state,
+        currentIndex: 0,
+        isPlaying: false,
+      });
+    }
   };
 
   const previousTrack = () => {
+    const nextIndex = currentIndex - 1;
+    if (nextIndex >= 0) {
+      setState({
+        ...state,
+        currentIndex: nextIndex,
+      });
+    }
+  };
+
+  const setSearchInput = (input) => {
     setState({
       ...state,
-      currentIndex: currentIndex - 1,
+      searchInput: input,
     });
   };
 
@@ -60,6 +81,8 @@ const useMusicState = () => {
     playTrack,
     nextTrack,
     previousTrack,
+    setCurrentTrack,
+    setSearchInput,
   };
 };
 

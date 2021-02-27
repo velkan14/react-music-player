@@ -11,45 +11,30 @@ import {
   TwitterIcon,
 } from "react-share";
 
-const MusicDetails = ({ match, history }) => {
-  const trackId = parseInt(match.params.id);
-
+const MusicDetails = () => {
   const {
     tracks,
     playTrack,
+    currentIndex,
     nextTrack,
     previousTrack,
     togglePlay,
     isPlaying,
   } = useMusicState();
 
-  const track = tracks.find((track) => {
-    return track.trackId === trackId;
-  });
-
-  const trackIndex = tracks.findIndex((track) => {
-    return track.trackId === trackId;
-  });
+  const track = tracks[currentIndex];
 
   const onNextClick = () => {
-    const nextIndex = trackIndex + 1;
-    if (nextIndex < tracks.length) {
-      history.push(`/music/${tracks[nextIndex].trackId}`);
-      nextTrack();
-    }
+    nextTrack();
   };
 
   const onPreviousClick = () => {
-    const previousIndex = trackIndex - 1;
-    if (previousIndex >= 0) {
-      history.push(`/music/${tracks[previousIndex].trackId}`);
-      previousTrack();
-    }
+    previousTrack();
   };
 
   const onPlayClick = () => {
     if (isPlaying) togglePlay();
-    else playTrack(trackIndex);
+    else playTrack(currentIndex);
   };
 
   if (track === undefined) {
@@ -74,13 +59,19 @@ const MusicDetails = ({ match, history }) => {
         <img src={track.artworkUrl100} alt="Cover" />
         <h2>{track.trackName}</h2>
         <h5>{track.artistName}</h5>
-        {/*<button onClick={onPlayClick}>Play</button>*/}
       </section>
 
       <section>
-        <button onClick={onPreviousClick}>Previous</button>
+        <button onClick={onPreviousClick} disabled={currentIndex === 0}>
+          Previous
+        </button>
         <button onClick={onPlayClick}>{isPlaying ? "Pause" : "Play"}</button>
-        <button onClick={onNextClick}>Next</button>
+        <button
+          onClick={onNextClick}
+          disabled={currentIndex === tracks.length - 1}
+        >
+          Next
+        </button>
       </section>
 
       <section>

@@ -12,7 +12,7 @@ const millisToMinutesAndSeconds = (millis) => {
 
 const MusicList = ({ history }) => {
   // eslint-disable-next-line
-  const { tracks, isLoading } = useMusicState();
+  const { tracks, isLoading, setCurrentTrack } = useMusicState();
 
   const data = React.useMemo(() => tracks, [tracks]);
 
@@ -85,7 +85,9 @@ const MusicList = ({ history }) => {
   );
 
   const onRowClick = (row) => {
-    if (row.original.trackId) history.push(`/music/${row.original.trackId}`);
+    const index = tracks.indexOf(row.original);
+    setCurrentTrack(index);
+    history.push(`/music`);
   };
 
   const {

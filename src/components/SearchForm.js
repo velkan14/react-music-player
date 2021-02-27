@@ -2,18 +2,22 @@ import React, { useState } from "react";
 import useMusicState from "./useMusicState";
 
 const SearchForm = () => {
-  const [input, setInput] = useState("");
-
   // eslint-disable-next-line
-  const { setTracks, toggleLoading } = useMusicState();
+  const {
+    setTracks,
+    toggleLoading,
+    searchInput,
+    setSearchInput,
+  } = useMusicState();
 
   const updateInput = (event) => {
-    setInput(event.target.value);
+    setSearchInput(event.target.value);
   };
 
-  const onSearch = (input) => {
+  const onSearch = (e) => {
+    e.preventDefault();
     toggleLoading();
-    fetch("https://itunes.apple.com/search?term=" + input, {
+    fetch("https://itunes.apple.com/search?term=" + searchInput, {
       crossDomain: true,
       method: "Get",
       headers: { "Content-Type": "application/json" },
@@ -25,17 +29,12 @@ const SearchForm = () => {
       });
   };
 
-  const searchMusic = (e) => {
-    e.preventDefault();
-    onSearch(input);
-  };
-
   return (
-    <form onSubmit={searchMusic}>
+    <form onSubmit={onSearch}>
       <input
         type="text"
         placeholder="Search..."
-        value={input}
+        value={searchInput}
         onChange={updateInput}
       />
       <button>Search</button>
