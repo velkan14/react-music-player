@@ -1,102 +1,37 @@
-import React from "react";
-import { useTable, useSortBy } from "react-table";
+import React, { useState } from "react";
 import useMusicState from "./useMusicState";
-
-const millisToMinutesAndSeconds = (millis) => {
-  var minutes = Math.floor(millis / 60000);
-  var seconds = ((millis % 60000) / 1000).toFixed(0);
-  return seconds === 60
-    ? minutes + 1 + ":00"
-    : minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
-};
+import TrackView from "./TrackView";
+import "../styles/MusicList.css";
+import { createSorter } from "../utils/Sort";
+import SortProperty from "./SortProperty";
 
 const MusicList = ({ history }) => {
   // eslint-disable-next-line
-  const { tracks, isLoading, setCurrentTrack } = useMusicState();
+  const { tracks, setTracks, isLoading, setCurrentTrack } = useMusicState();
 
-  const data = React.useMemo(() => tracks, [tracks]);
+  const [sortOptions, setSortOptions] = useState({
+    property: "default",
+    direction: "DESC",
+  });
 
-  const columns = React.useMemo(
-    () => [
-      {
-        Header: "Cover",
-        accessor: "artworkUrl60", // accessor is the "key" in the data
-        disableSortBy: true,
-        Cell: ({ value }) => <img src={value} alt="Cover"></img>,
-      },
-      {
-        Header: "Title",
-        accessor: "trackName", // accessor is the "key" in the data
-        disableSortBy: true,
-      },
-      {
-        Header: "Artist",
-        accessor: "artistName",
-        disableSortBy: true,
-      },
-      {
-        Header: "Album",
-        accessor: "collectionName",
-        disableSortBy: true,
-      },
-      {
-        Header: "Release Date",
-        accessor: "releaseDate",
-        disableSortBy: true,
-        Cell: ({ value }) => {
-          const date = new Date(value).toLocaleDateString("en-US", {
-            month: "short",
-            year: "numeric",
-          });
-          return String(date);
-        },
-      },
-      {
-        Header: "Length",
-        accessor: "trackTimeMillis",
-        sortType: "basic",
-        Cell: ({ value }) => {
-          return value ? String(millisToMinutesAndSeconds(value)) : "";
-        },
-      },
-      {
-        Header: "Genre",
-        accessor: "primaryGenreName",
-        sortType: "basic",
-      },
-      {
-        Header: "Price",
-        accessor: "trackPrice",
-        sortType: "basic",
-
-        Cell: (table) => {
-          if (table.value < 0) return "-";
-          const price = new Intl.NumberFormat("en-US", {
-            style: "currency",
-            currency: table.row.original.currency,
-          }).format(
-            table.value ? table.value : table.row.original.collectionPrice
-          );
-          return String(price);
-        },
-      },
-    ],
-    []
-  );
-
-  const onRowClick = (row) => {
-    const index = tracks.indexOf(row.original);
+  const onRowClick = (track) => {
+    const index = tracks.indexOf(track);
     setCurrentTrack(index);
     history.push(`/music`);
   };
 
-  const {
-    getTableProps,
-    getTableBodyProps,
-    headerGroups,
-    rows,
-    prepareRow,
-  } = useTable({ columns, data }, useSortBy);
+  const sortBy = (property) => {
+    let options = sortOptions;
+    if (options.property === property) {
+      if (options.direction === "ASC") {
+        options.direction = "DESC";
+      } else options.direction = "ASC";
+    }
+    options.property = property;
+    tracks.sort(createSorter(options));
+    setSortOptions(options);
+    setTracks(tracks);
+  };
 
   if (tracks.length === 0) {
     return <h3>Search at some music to start the grove!</h3>;
@@ -105,34 +40,38 @@ const MusicList = ({ history }) => {
   return isLoading ? (
     <h2>Loading...</h2>
   ) : (
-    <table {...getTableProps()}>
-      <thead>
-        {headerGroups.map((headerGroup) => (
-          <tr {...headerGroup.getHeaderGroupProps()}>
-            {headerGroup.headers.map((column) => (
-              <th {...column.getHeaderProps(column.getSortByToggleProps())}>
-                {column.render("Header")}
-                <span>
-                  {column.isSorted ? (column.isSortedDesc ? " 🔽" : " 🔼") : ""}
-                </span>
-              </th>
-            ))}
-          </tr>
+    <div>
+      <div style={{ display: "flex" }}>
+        <p>Order by:</p>
+        <SortProperty
+          name="Genre"
+          property="primaryGenreName"
+          sortBy={sortBy}
+          currentSortOptions={sortOptions}
+        />
+        <SortProperty
+          name="Length"
+          property="trackTimeMillis"
+          sortBy={sortBy}
+          currentSortOptions={sortOptions}
+        />
+        <SortProperty
+          name="Price"
+          property="trackPrice"
+          sortBy={sortBy}
+          currentSortOptions={sortOptions}
+        />
+      </div>
+      <div className="grid avenir ">
+        {tracks.map((track) => (
+          <TrackView
+            track={track}
+            onClick={onRowClick}
+            //order={selectedOption.value}
+          ></TrackView>
         ))}
-      </thead>
-      <tbody {...getTableBodyProps()}>
-        {rows.map((row) => {
-          prepareRow(row);
-          return (
-            <tr {...row.getRowProps()} onClick={() => onRowClick(row)}>
-              {row.cells.map((cell) => {
-                return <td {...cell.getCellProps()}>{cell.render("Cell")}</td>;
-              })}
-            </tr>
-          );
-        })}
-      </tbody>
-    </table>
+      </div>
+    </div>
   );
 };
 

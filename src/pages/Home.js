@@ -5,7 +5,7 @@ import MusicList from "../components/MusicList";
 
 const Home = ({ history }) => {
   return (
-    <div className="Home">
+    <div className="main">
       <Navigation />
       <SearchForm />
       <MusicList history={history} />

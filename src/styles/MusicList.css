@@ -1,0 +1,12 @@
+.container {
+  min-height: 100vh;
+  padding: 0 0.5rem;
+  color: #d7cdcc;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+table {
+  max-width: 800px;
+}

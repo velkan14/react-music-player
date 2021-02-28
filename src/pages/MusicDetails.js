@@ -63,14 +63,16 @@ const MusicDetails = () => {
 
       <section>
         <button onClick={onPreviousClick} disabled={currentIndex === 0}>
-          Previous
+          &#9194;
         </button>
-        <button onClick={onPlayClick}>{isPlaying ? "Pause" : "Play"}</button>
+        <button onClick={onPlayClick}>
+          {isPlaying ? <span>&#9208;</span> : <span>&#9654;</span>}
+        </button>
         <button
           onClick={onNextClick}
           disabled={currentIndex === tracks.length - 1}
         >
-          Next
+          &#9193;
         </button>
       </section>
 
