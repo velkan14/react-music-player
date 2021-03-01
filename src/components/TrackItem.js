@@ -1,8 +1,8 @@
 import React from "react";
 import { formatMillis, formatDate, formatPrice } from "../utils/Format";
-import "../styles/TrackView.css";
+import "../styles/TrackItem.css";
 
-const TrackView = ({ track, onClick }) => {
+const TrackItem = ({ track, onClick }) => {
   return (
     <div className="card " onClick={() => onClick(track)}>
       <div className="ma2">
@@ -35,4 +35,4 @@ const TrackView = ({ track, onClick }) => {
   );
 };
 
-export default TrackView;
+export default TrackItem;

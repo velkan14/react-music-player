@@ -6,9 +6,9 @@ const SortProperty = ({ name, property, sortBy, currentSortOptions }) => {
       {name}
       {currentSortOptions.property === property ? (
         currentSortOptions.direction === "ASC" ? (
-          <span>&#8595;</span>
+          <span>↓</span>
         ) : (
-          <span>&#8593;</span>
+          <span>↑</span>
         )
       ) : null}
     </p>

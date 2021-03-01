@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import useMusicState from "./useMusicState";
-import TrackView from "./TrackView";
+import TrackItem from "../components/TrackItem";
 import { createSorter } from "../utils/Sort";
-import SortProperty from "./SortProperty";
+import SortProperty from "../components/SortProperty";
 import "../styles/MusicList.css";
 
 const MusicList = ({ history }) => {
@@ -64,7 +64,7 @@ const MusicList = ({ history }) => {
       </div>
       <div className="grid">
         {tracks.map((track) => (
-          <TrackView track={track} onClick={onEntryClick}></TrackView>
+          <TrackItem track={track} onClick={onEntryClick} />
         ))}
       </div>
     </div>

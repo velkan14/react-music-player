@@ -1,6 +1,6 @@
 import React from "react";
-import SearchForm from "../components/SearchForm";
-import MusicList from "../components/MusicList";
+import SearchForm from "../containers/SearchForm";
+import MusicList from "../containers/MusicList";
 import "../styles/Home.css";
 
 const Home = ({ history }) => {

@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import useMusicState from "../components/useMusicState";
+import useMusicState from "../containers/useMusicState";
 import {
   FacebookShareButton,
   LinkedinShareButton,
@@ -9,9 +9,9 @@ import {
   LinkedinIcon,
   TwitterIcon,
 } from "react-share";
-import "../styles/MusicDetails.css";
 import TrackOverview from "../components/TrackOverview";
 import MediaControls from "../components/MediaControls";
+import "../styles/MusicDetails.css";
 
 const MusicDetails = () => {
   const {
@@ -59,6 +59,7 @@ const MusicDetails = () => {
         onNextClick={onNextClick}
         disablePrevious={currentIndex === 0}
         disableNext={currentIndex === tracks.length - 1}
+        isPlaying={isPlaying}
       />
       <section className="share ma3 pa3">
         <FacebookShareButton

@@ -1,9 +1,9 @@
 import React from "react";
 import "./App.css";
-import { BrowserRouter } from "react-router-dom";
-import { MusicProvider } from "./components/MusicContext";
 import Routes from "./routes";
-import MusicPlayer from "./components/MusicPlayer";
+import { BrowserRouter } from "react-router-dom";
+import { MusicProvider } from "./containers/MusicContext";
+import MusicPlayer from "./containers/MusicPlayer";
 import Navigation from "./components/Navigation";
 
 const App = () => {
