@@ -5,15 +5,15 @@ import "../styles/TrackOverview.css";
 const TrackOverview = ({ track }) => {
   return (
     <section className="TrackOverview ma1 ">
-      <div>
-        <h2 className="ma1 pa1">{track.collectionName}</h2>
-        <h4 className="ma1 pa1">{formatDate(track.releaseDate)}</h4>
-      </div>
       <img
         className="ma2 pa1"
         src={track.artworkUrl100.replace("100x100bb.jpg", "400x400bb.jpg")}
         alt="Cover"
       />
+      <div className="albumDetails">
+        <h2 className="ma1 pa1">{track.collectionName}</h2>
+        <h4 className="ma1 pa1">{formatDate(track.releaseDate)}</h4>
+      </div>
       <div className="songDetails">
         <div className="detailsLeft ma3 pa2">
           <p className="f3 ma1 b">{track.trackName}</p>

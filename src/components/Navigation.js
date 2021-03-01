@@ -8,11 +8,11 @@ const Navigation = () => {
   return (
     <nav className="Navigation">
       {location.pathname !== "/" && (
-        <Link className="f3 ma4 pa4" to="/">
-          🡸
+        <Link className="back" to="/">
+          ←
         </Link>
       )}
-      <h1>Music Player ♫ </h1>
+      <h1>Music Player ♫</h1>
     </nav>
   );
 };

@@ -6,8 +6,16 @@
   width: 100%;
   background-color: black;
   color: #ffff;
-  position: fixed;
+  position: absolute;
   top: 0;
+}
+
+.back {
+  margin: 1.5rem 1rem;
+}
+
+.Navigation h1 {
+  align-self: center;
 }
 
 .Navigation a {
