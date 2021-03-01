@@ -2,7 +2,7 @@ import React from "react";
 
 const SortProperty = ({ name, property, sortBy, currentSortOptions }) => {
   return (
-    <p onClick={() => sortBy(property)}>
+    <p className="ma1 pa1 link grow" onClick={() => sortBy(property)}>
       {name}
       {currentSortOptions.property === property ? (
         currentSortOptions.direction === "ASC" ? (

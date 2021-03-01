@@ -1,10 +1,11 @@
 import React from "react";
+import "../styles/Navigation.css";
 
 const Navigation = () => {
   return (
-    <div>
-      <h1>Music Player</h1>
-    </div>
+    <nav className="Navigation">
+      <h1>Music Player ♫ </h1>
+    </nav>
   );
 };
 

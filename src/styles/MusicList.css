@@ -1,12 +1,7 @@
-.container {
-  min-height: 100vh;
-  padding: 0 0.5rem;
-  color: #d7cdcc;
+.grid {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
   align-items: center;
-}
-table {
+  justify-content: center;
+  flex-wrap: wrap;
   max-width: 800px;
 }

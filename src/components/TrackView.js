@@ -9,7 +9,7 @@ const millisToMinutesAndSeconds = (millis) => {
     : minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
 };
 
-const TrackView = ({ track, onClick, order }) => {
+const TrackView = ({ track, onClick }) => {
   let price = "0.0";
   if (track.trackPrice < 0) price = "-";
   else {
@@ -21,39 +21,32 @@ const TrackView = ({ track, onClick, order }) => {
   }
 
   const date = new Date(track.releaseDate).toLocaleDateString("en-US", {
-    month: "short",
+    month: "long",
     year: "numeric",
   });
 
   return (
-    <div className="card" onClick={() => onClick(track)}>
-      <div className="image">
+    <div className="card " onClick={() => onClick(track)}>
+      <div className="ma2">
         <img src={track.artworkUrl60} alt="Cover"></img>
       </div>
       <div className="info">
-        <h3>{track.trackName}</h3>
-        <h4>{track.artistName}</h4>
-        <h5>{track.collectionName}</h5>
+        <p className="f5 b">{track.trackName}</p>
+        <p className="f5 white-60">{track.artistName}</p>
+        <p className="f5 white-60">{track.collectionName}</p>
       </div>
       <div className="details">
         <p>{String(date)}</p>
-        <div className="orders">
-          <p>
-            {track.primaryGenreName}{" "}
-            {order === "genre" ? <span>&#11015;</span> : null}
-          </p>
-          <span>&#8901;</span>
-          <p>
-            {track.trackTimeMillis
-              ? String(millisToMinutesAndSeconds(track.trackTimeMillis))
-              : ""}{" "}
-            {order === "length" ? <span>&#11015;</span> : null}
-          </p>
-          <span>&#8901;</span>
-          <p>
-            {price} {order === "price" ? <span>&#11015;</span> : null}
-          </p>
-        </div>
+        <span>&#8901;</span>
+        <p>{track.primaryGenreName} </p>
+        <span>&#8901;</span>
+        <p>
+          {track.trackTimeMillis
+            ? String(millisToMinutesAndSeconds(track.trackTimeMillis))
+            : ""}
+        </p>
+        <span>&#8901;</span>
+        <p>{price}</p>
       </div>
     </div>
   );

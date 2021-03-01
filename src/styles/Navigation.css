@@ -1,0 +1,11 @@
+.Navigation {
+  display: flex;
+  justify-content: flex-start;
+  margin: 0;
+  padding: 0 1rem 0 1rem;
+  width: 100%;
+  background-color: black;
+  color: #ffff;
+  position: fixed;
+  top: 0;
+}

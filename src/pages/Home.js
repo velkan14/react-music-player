@@ -1,15 +1,14 @@
 import React from "react";
-import Navigation from "../components/Navigation";
 import SearchForm from "../components/SearchForm";
 import MusicList from "../components/MusicList";
+import "../styles/Home.css";
 
 const Home = ({ history }) => {
   return (
-    <div className="main">
-      <Navigation />
+    <main className="Home">
       <SearchForm />
       <MusicList history={history} />
-    </div>
+    </main>
   );
 };
 

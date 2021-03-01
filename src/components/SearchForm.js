@@ -1,5 +1,6 @@
 import React from "react";
 import useMusicState from "./useMusicState";
+import "../styles/SearchForm.css";
 
 const SearchForm = () => {
   // eslint-disable-next-line
@@ -30,14 +31,15 @@ const SearchForm = () => {
   };
 
   return (
-    <form onSubmit={onSearch}>
+    <form className="SearchForm ma2 pa3 f4" onSubmit={onSearch}>
       <input
+        className="ma2 pa2 ba br2 b--white-50"
         type="text"
         placeholder="Search..."
         value={searchInput}
         onChange={updateInput}
       />
-      <button>Search</button>
+      <button className="ma2 pa2 br2">Search</button>
     </form>
   );
 };

@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import useMusicState from "./useMusicState";
 import TrackView from "./TrackView";
-import "../styles/MusicList.css";
 import { createSorter } from "../utils/Sort";
 import SortProperty from "./SortProperty";
+import "../styles/MusicList.css";
 
 const MusicList = ({ history }) => {
   // eslint-disable-next-line
@@ -14,7 +14,7 @@ const MusicList = ({ history }) => {
     direction: "DESC",
   });
 
-  const onRowClick = (track) => {
+  const onEntryClick = (track) => {
     const index = tracks.indexOf(track);
     setCurrentTrack(index);
     history.push(`/music`);
@@ -41,8 +41,8 @@ const MusicList = ({ history }) => {
     <h2>Loading...</h2>
   ) : (
     <div>
-      <div style={{ display: "flex" }}>
-        <p>Order by:</p>
+      <div className="ma2" style={{ display: "flex" }}>
+        <p className="ma1 pa1">Order by:</p>
         <SortProperty
           name="Genre"
           property="primaryGenreName"
@@ -62,13 +62,9 @@ const MusicList = ({ history }) => {
           currentSortOptions={sortOptions}
         />
       </div>
-      <div className="grid avenir ">
+      <div className="grid">
         {tracks.map((track) => (
-          <TrackView
-            track={track}
-            onClick={onRowClick}
-            //order={selectedOption.value}
-          ></TrackView>
+          <TrackView track={track} onClick={onEntryClick}></TrackView>
         ))}
       </div>
     </div>
