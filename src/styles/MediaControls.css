@@ -1,0 +1,11 @@
+.MediaControls {
+  display: flex;
+  justify-content: space-between;
+}
+
+.control {
+  background-color: #141516;
+  color: #ffff;
+  border-color: #ffff;
+  width: 8rem;
+}

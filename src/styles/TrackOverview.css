@@ -1,0 +1,18 @@
+.TrackOverview {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.songDetails {
+  display: flex;
+}
+
+.detailsLeft {
+  align-self: flex-start;
+}
+
+.detailsRight {
+  text-align: right;
+  align-self: flex-end;
+}
