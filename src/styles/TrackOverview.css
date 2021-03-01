@@ -6,13 +6,16 @@
 
 .songDetails {
   display: flex;
+  flex: 1 0 100%;
+  max-width: 800px;
+  min-width: 400px;
+  justify-content: space-between;
+  align-items: flex-end;
 }
 
 .detailsLeft {
-  align-self: flex-start;
 }
 
 .detailsRight {
   text-align: right;
-  align-self: flex-end;
 }

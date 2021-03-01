@@ -34,7 +34,7 @@ const MusicList = ({ history }) => {
   };
 
   if (tracks.length === 0) {
-    return <h3>Search at some music to start the grove!</h3>;
+    return <h3>Search some music to start grooving!</h3>;
   }
 
   return isLoading ? (

@@ -4,14 +4,11 @@ import "../styles/TrackOverview.css";
 
 const TrackOverview = ({ track }) => {
   return (
-    <section className="TrackOverview ma3 pa1">
-      <h2 className="ma1 pa1">{track.collectionName}</h2>
-      <h4 className="ma1 pa1">
-        {new Date(track.releaseDate).toLocaleDateString("en-US", {
-          month: "long",
-          year: "numeric",
-        })}
-      </h4>
+    <section className="TrackOverview ma1 ">
+      <div>
+        <h2 className="ma1 pa1">{track.collectionName}</h2>
+        <h4 className="ma1 pa1">{formatDate(track.releaseDate)}</h4>
+      </div>
       <img
         className="ma2 pa1"
         src={track.artworkUrl100.replace("100x100bb.jpg", "400x400bb.jpg")}
@@ -35,7 +32,6 @@ const TrackOverview = ({ track }) => {
               ? String(formatMillis(track.trackTimeMillis))
               : ""}
           </p>
-          <p className="f5 ma1 white-60">{formatDate(track.releaseDate)}</p>
         </div>
       </div>
     </section>

@@ -4,7 +4,7 @@ import "../styles/TrackItem.css";
 
 const TrackItem = ({ track, onClick }) => {
   return (
-    <div className="card " onClick={() => onClick(track)}>
+    <div className="card clickable" onClick={() => onClick(track)}>
       <div className="ma2">
         <img src={track.artworkUrl60} alt="Cover"></img>
       </div>

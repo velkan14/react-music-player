@@ -16,17 +16,17 @@ const MediaControls = ({
         onClick={onPreviousClick}
         disabled={disablePrevious}
       >
-        ⏪️
+        |◀
       </button>
       <button className="control ma2 pa2 br4" onClick={onPlayClick}>
-        {isPlaying ? "⏸️" : "▶️"}
+        {isPlaying ? "⏸" : "▶"}
       </button>
       <button
         className="control ma2 pa2 br4"
         onClick={onNextClick}
         disabled={disableNext}
       >
-        ⏩️
+        ▶|
       </button>
     </section>
   );

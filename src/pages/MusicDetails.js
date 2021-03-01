@@ -49,9 +49,6 @@ const MusicDetails = () => {
   }
   return (
     <main className="MusicDetails">
-      <Link to="/">
-        <p>Go Back.</p>
-      </Link>
       <TrackOverview track={track} />
       <MediaControls
         onPreviousClick={onPreviousClick}
