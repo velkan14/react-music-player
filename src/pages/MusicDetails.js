@@ -82,8 +82,8 @@ const MusicDetails = () => {
         <TwitterShareButton
           className="ma1 pa1"
           url="https://danielamado.dev"
-          title="Listening Now"
-          via={`${track.trackName} from ${track.artistName}`}
+          title={`Listening Now ${track.trackName} from ${track.artistName}`}
+          via="velkan14"
           hashtags={[track.artistName]}
         >
           <TwitterIcon size={32} />
