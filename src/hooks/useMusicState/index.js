@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { MusicContext } from "./MusicContext";
+import { MusicContext } from "../../components";
 
 const useMusicState = () => {
   const [state, setState] = useContext(MusicContext);
@@ -86,4 +86,4 @@ const useMusicState = () => {
   };
 };
 
-export default useMusicState;
+export { useMusicState };

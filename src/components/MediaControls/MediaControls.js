@@ -1,5 +1,5 @@
 import React from "react";
-import "../styles/MediaControls.css";
+import "./MediaControls.css";
 
 const MediaControls = ({
   isPlaying,
@@ -32,4 +32,4 @@ const MediaControls = ({
   );
 };
 
-export default MediaControls;
+export { MediaControls };

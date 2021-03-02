@@ -1,13 +1,14 @@
 import React, { useState } from "react";
-import useMusicState from "./useMusicState";
-import TrackItem from "../components/TrackItem";
-import { createSorter } from "../utils/Sort";
-import SortProperty from "../components/SortProperty";
-import "../styles/MusicList.css";
+import { useHistory } from "react-router-dom";
+import { SortProperty, TrackItem } from "..";
+import { createSorter } from "../../utils/Sort";
+import { useMusicState } from "../../hooks";
+import "./MusicList.css";
 
-const MusicList = ({ history }) => {
-  // eslint-disable-next-line
+const MusicList = () => {
   const { tracks, setTracks, isLoading, setCurrentTrack } = useMusicState();
+
+  const history = useHistory();
 
   const [sortOptions, setSortOptions] = useState({
     property: "default",
@@ -41,7 +42,7 @@ const MusicList = ({ history }) => {
     <h2>Loading...</h2>
   ) : (
     <div>
-      <div className="ma2" style={{ display: "flex" }}>
+      <div className="sort ma2">
         <p className="ma1 pa1">Order by:</p>
         <SortProperty
           name="Genre"
@@ -71,4 +72,4 @@ const MusicList = ({ history }) => {
   );
 };
 
-export default MusicList;
+export { MusicList };

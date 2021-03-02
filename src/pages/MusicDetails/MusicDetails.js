@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import useMusicState from "../containers/useMusicState";
 import {
   FacebookShareButton,
   LinkedinShareButton,
@@ -9,9 +8,9 @@ import {
   LinkedinIcon,
   TwitterIcon,
 } from "react-share";
-import TrackOverview from "../components/TrackOverview";
-import MediaControls from "../components/MediaControls";
-import "../styles/MusicDetails.css";
+import { useMusicState } from "../../hooks";
+import { TrackOverview, MediaControls } from "../../components";
+import "./MusicDetails.css";
 
 const MusicDetails = () => {
   const {
@@ -90,4 +89,4 @@ const MusicDetails = () => {
   );
 };
 
-export default MusicDetails;
+export { MusicDetails };

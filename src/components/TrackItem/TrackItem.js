@@ -1,6 +1,6 @@
 import React from "react";
-import { formatMillis, formatDate, formatPrice } from "../utils/Format";
-import "../styles/TrackItem.css";
+import { formatMillis, formatDate, formatPrice } from "../../utils/Format";
+import "./TrackItem.css";
 
 const TrackItem = ({ track, onClick }) => {
   return (
@@ -35,4 +35,4 @@ const TrackItem = ({ track, onClick }) => {
   );
 };
 
-export default TrackItem;
+export { TrackItem };

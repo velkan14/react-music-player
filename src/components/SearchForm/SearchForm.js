@@ -1,9 +1,8 @@
 import React from "react";
-import useMusicState from "./useMusicState";
-import "../styles/SearchForm.css";
+import { useMusicState } from "../../hooks";
+import "./SearchForm.css";
 
 const SearchForm = () => {
-  // eslint-disable-next-line
   const {
     setTracks,
     toggleLoading,
@@ -20,7 +19,7 @@ const SearchForm = () => {
     toggleLoading();
     fetch("https://itunes.apple.com/search?term=" + searchInput, {
       crossDomain: true,
-      method: "Get",
+      method: "GET",
       headers: { "Content-Type": "application/json" },
     })
       .then((response) => response.json())
@@ -44,4 +43,4 @@ const SearchForm = () => {
   );
 };
 
-export default SearchForm;
+export { SearchForm };

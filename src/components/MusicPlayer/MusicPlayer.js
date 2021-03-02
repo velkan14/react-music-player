@@ -1,9 +1,8 @@
 import React from "react";
 import Sound from "react-sound";
-import useMusicState from "./useMusicState";
+import { useMusicState } from "../../hooks";
 
 const MusicPlayer = () => {
-  // eslint-disable-next-line
   const { tracks, currentIndex, isPlaying, nextTrack } = useMusicState();
 
   if (currentIndex < 0) return null;
@@ -23,4 +22,4 @@ const MusicPlayer = () => {
   );
 };
 
-export default MusicPlayer;
+export { MusicPlayer };

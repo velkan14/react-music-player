@@ -1,6 +1,6 @@
 import React from "react";
-import { formatMillis, formatDate, formatPrice } from "../utils/Format";
-import "../styles/TrackOverview.css";
+import { formatMillis, formatDate, formatPrice } from "../../utils/Format";
+import "./TrackOverview.css";
 
 const TrackOverview = ({ track }) => {
   return (
@@ -38,4 +38,4 @@ const TrackOverview = ({ track }) => {
   );
 };
 
-export default TrackOverview;
+export { TrackOverview };

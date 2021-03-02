@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
-import "../styles/Navigation.css";
+import "./Navigation.css";
 
 const Navigation = () => {
   const location = useLocation();
@@ -8,7 +8,7 @@ const Navigation = () => {
   return (
     <nav className="Navigation">
       {location.pathname !== "/" && (
-        <Link className="back" to="/">
+        <Link className="back" to="/" disabled>
           ←
         </Link>
       )}
@@ -17,4 +17,4 @@ const Navigation = () => {
   );
 };
 
-export default Navigation;
+export { Navigation };

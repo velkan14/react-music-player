@@ -1,3 +1,7 @@
+.sort {
+  display: flex;
+}
+
 .grid {
   display: flex;
   align-items: center;
