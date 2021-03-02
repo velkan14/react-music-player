@@ -1,5 +1,5 @@
 import React from "react";
-import { formatMillis, formatDate, formatPrice } from "../../utils/Format";
+import { formatMillis, formatDate, formatPrice } from "../../utils";
 import "./TrackOverview.css";
 
 const TrackOverview = ({ track }) => {

@@ -10,12 +10,14 @@ const formatPrice = (price, currency) => {
 };
 
 const formatDate = (date) => {
-  return String(
+  if (date.length === 0) return date;
+  const formated = String(
     new Date(date).toLocaleDateString("en-US", {
       month: "long",
       year: "numeric",
     })
   );
+  return formated === "Invalid Date" ? "" : formated;
 };
 
 const formatMillis = (millis) => {

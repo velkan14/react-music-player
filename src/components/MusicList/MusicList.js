@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { SortProperty, TrackItem } from "..";
-import { createSorter } from "../../utils/Sort";
+import { createSorter } from "../../utils";
 import { useMusicState } from "../../hooks";
 import "./MusicList.css";
 
