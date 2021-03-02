@@ -2,6 +2,8 @@
 
 React.js application to list and play musics.
 
+Check it out [here](https://react-music-player-velkan14.vercel.app)!
+
 ## Getting Started
 
 ### Prerequisites
